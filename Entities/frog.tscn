@@ -16,29 +16,36 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Frog" type="CharacterBody3D" node_paths=PackedStringArray("movement_timer", "talking_timer", "bozoing_timer")]
+[node name="Frog" type="CharacterBody3D" node_paths=PackedStringArray("movement_timer", "talking_timer", "invincibility_timer")]
 script = ExtResource("1_ayld7")
 movement_timer = NodePath("MovementTimer")
 talking_timer = NodePath("TalkingTimer")
-bozoing_timer = NodePath("InvincibilityTimer")
+invincibility_timer = NodePath("InvincibilityTimer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_uvtbl")
 
 [node name="MovementTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 
 [node name="TalkingTimer" type="Timer" parent="."]
 
 [node name="InvincibilityTimer" type="Timer" parent="."]
-
-[node name="MainSprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.732877, 0, 0, 0, 1.38283, 0, 0, 0, 1, 0, 1, 0)
-billboard = 2
-sprite_frames = SubResource("SpriteFrames_2bcvu")
+wait_time = 3.0
+one_shot = true
 
 [node name="HappyParticles" type="CPUParticles3D" parent="."]
 
 [node name="AngryParticles" type="CPUParticles3D" parent="."]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+unique_name_in_owner = true
+
+[node name="SpriteOrigin" type="Node3D" parent="."]
+
+[node name="MainSprite" type="AnimatedSprite3D" parent="SpriteOrigin"]
+transform = Transform3D(0.732877, 0, 0, 0, 1.38283, 0, 0, 0, 1, 0, 1, 0)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_2bcvu")

@@ -45,8 +45,11 @@ func _physics_process(delta: float) -> void:
 
 func push():
 	# Check what frogs are in front in area2D, call their on_pushed()
-	print("Push!")
 	can_push = false
+	
+	for body in $PushArea.get_overlapping_bodies():
+		if body.has_method("on_pushed"):
+			body.on_pushed()
 	
 	pass
 

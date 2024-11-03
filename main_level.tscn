@@ -7,6 +7,8 @@
 [sub_resource type="Environment" id="Environment_nvwhm"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_5ocl7"]
+vertices = PackedVector3Array(-7.5, 0.5, -7.5, -7.5, 0.5, 7.5, 7.5, 0.5, 7.5, 7.5, 0.5, -7.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="MainLevel" type="Node3D"]
 
@@ -20,16 +22,32 @@ fov = 90.0
 
 [node name="HudMenu" parent="." instance=ExtResource("2_68xt6")]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-use_collision = true
-size = Vector3(16, 1, 16)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.670564, 0.252909, 0.69741, 0.61303, -0.34051, 0.712915, 0.417778, 0.905588, 0.0732933, 3.47841, 2.61886, 0)
 
 [node name="Frog" parent="." instance=ExtResource("3_3qwbp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6835, 0, -4.9626)
 
+[node name="Frog2" parent="." instance=ExtResource("3_3qwbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07927, 0, -1.90185)
+can_move = true
+
+[node name="Frog3" parent="." instance=ExtResource("3_3qwbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90511, 0, 1.71893)
+can_move = true
+
+[node name="Frog4" parent="." instance=ExtResource("3_3qwbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25025, 0, 1.71893)
+can_move = true
+
+[node name="Frog5" parent="." instance=ExtResource("3_3qwbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.26229, 0, -4.12766)
+can_move = true
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_5ocl7")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(16, 1, 16)
